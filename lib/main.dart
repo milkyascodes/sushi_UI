@@ -71,13 +71,14 @@ class LandingPage extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: 60, vertical: 30),
                       child: Column(
                         children: [
-                          buildTitle('Baking Experience Like a Chef', 28, 1.4),
+                          buildTitle('Baking Experience Like a Chef', 28, 1.4,
+                              Colors.white, true),
                           SizedBox(height: 20),
                           buildDescription(
                               'Let\'s make a delious dish with the best reciepe for the family',
                               17),
                           SizedBox(height: 40),
-                          buildFAB(),
+                          buildFAB(context),
                           SizedBox(height: 20),
                         ],
                       ),
