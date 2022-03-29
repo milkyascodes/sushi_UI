@@ -34,28 +34,31 @@ class LandingPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 255, 255, 255),
-              // Color.fromARGB(255, 255, 255, 255),
-              Color.fromARGB(255, 0, 0, 0)
-            ],
-          )),
+            color: Color.fromARGB(183, 182, 166, 124),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(.7), BlendMode.dstATop),
+              image: AssetImage(
+                'assets/images/cake2.jpg',
+              ),
+            ),
+          ),
           child: Stack(
             children: [
-              Positioned(
-                  // top: 0,
-                  // left: 0,
-                  // right: 0,
-                  child: Image(
-                height: double.infinity,
-                colorBlendMode: BlendMode.exclusion,
-                image: AssetImage('assets/images/cake2.jpg'),
-                fit: BoxFit.cover,
-                // alignment: Alignment.topCenter,
-              )),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromARGB(0, 255, 255, 255),
+                      Color.fromARGB(75, 0, 0, 0),
+                      Color.fromARGB(255, 0, 0, 0)
+                    ],
+                  ),
+                ),
+              ),
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -66,8 +69,6 @@ class LandingPage extends StatelessWidget {
                     Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                      // color: Colors.green,
-                      // width: 300,
                       child: Column(
                         children: [
                           buildTitle('Baking Experience Like a Chef', 28, 1.4),
