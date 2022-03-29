@@ -78,3 +78,34 @@ Widget buildSearch() {
     ],
   );
 }
+
+Widget buildTabs() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      buildTabBtn('All', true),
+      SizedBox(width: 20),
+      buildTabBtn('Sushi', false),
+      SizedBox(width: 20),
+      buildTabBtn('Burgir', false),
+    ],
+  );
+}
+
+Widget buildTabBtn(String text, bool active) {
+  return Expanded(
+    child: Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: active ? Colors.green : Colors.white),
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 0),
+      child: Center(
+          child: Text(
+        text,
+        style: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: active ? Colors.white : Colors.black),
+      )),
+    ),
+  );
+}

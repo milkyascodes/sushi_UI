@@ -13,25 +13,28 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container(
-          padding: EdgeInsets.all(20),
-          width: double.infinity,
-          color: Color.fromARGB(255, 228, 233, 235),
-          child: Column(
-            children: [
-              SizedBox(
-                child: buildTitle('Find Best Reciepe For Cooking', 25, 1.4,
-                    Colors.black, false),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              buildSearch(),
-            ],
-          ),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        padding: EdgeInsets.all(20),
+        width: double.infinity,
+        color: Color.fromARGB(255, 235, 239, 240),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 60,
+            ),
+            buildTitle(
+                'Find Best Reciepe For Cooking', 25, 1.4, Colors.black, false),
+            SizedBox(
+              height: 30,
+            ),
+            buildSearch(),
+            SizedBox(
+              height: 25,
+            ),
+            buildTabs(),
+          ],
         ),
       ),
     );
