@@ -68,7 +68,7 @@ Widget buildSearch() {
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              prefixIcon: Icon(FontAwesomeIcons.magnifyingGlass),
+              prefixIcon: Icon(Icons.search),
               hintText: 'Search Dish',
             ),
           ),
@@ -106,6 +106,35 @@ Widget buildTabBtn(String text, bool active) {
             fontWeight: FontWeight.w500,
             color: active ? Colors.white : Colors.black),
       )),
+    ),
+  );
+}
+
+Widget buildCards() {
+  return Container(
+    height: 400,
+    width: 340,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.grey,
+    ),
+    child: Stack(
+      children: [
+        Container(
+          height: 400,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              image: DecorationImage(
+                  image: AssetImage('assets/images/cake3.jpg'),
+                  fit: BoxFit.cover)),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildTitle(' Special Berry Pancake', 25, 1.4, Colors.white, false),
+          ],
+        )
+      ],
     ),
   );
 }
