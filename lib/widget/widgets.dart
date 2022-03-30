@@ -85,9 +85,9 @@ Widget buildTabs() {
     children: [
       buildTabBtn('All', true),
       SizedBox(width: 20),
-      buildTabBtn('Sushi', false),
+      buildTabBtn('Cakes', false),
       SizedBox(width: 20),
-      buildTabBtn('Burgir', false),
+      buildTabBtn('Desserts', false),
     ],
   );
 }
@@ -125,14 +125,40 @@ Widget buildCards() {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
-                  image: AssetImage('assets/images/cake3.jpg'),
+                  image: AssetImage('assets/images/ckake1.jpg'),
                   fit: BoxFit.cover)),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            buildTitle(' Special Berry Pancake', 25, 1.4, Colors.white, false),
-          ],
+        Positioned(
+          bottom: 20,
+          left: 10,
+          child: Container(
+            width: 300,
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildTitle(
+                    'Chocolate  Cup Cakes', 26, 1.3, Colors.white, false),
+                SizedBox(height: 10),
+                buildDescription('12 ingredients | 40 mins', 15)
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          right: 15,
+          top: 20,
+          child: Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.brown.shade200.withOpacity(0.4),
+            ),
+            child: Icon(
+              FontAwesomeIcons.bookmark,
+              color: Colors.white,
+            ),
+          ),
         )
       ],
     ),
