@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sushi_ui/model/cake_model.dart';
+import 'package:sushi_ui/screens/detail_screen.dart';
 import 'package:sushi_ui/screens/home_screen.dart';
 
 Widget buildTitle(
@@ -167,19 +168,23 @@ Widget buildTabBtn(String text, bool active) {
 // }
 
 Widget buildCardss() {
-  return Container(
+  return SizedBox(
     height: 340,
-    // color: Colors.grey,
     child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: cakes.length,
         itemBuilder: (context, int index) {
           Cake cake = cakes[index];
-          return Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-            width: 300,
-            margin: EdgeInsets.only(right: 20),
-            child: buildCard(cake),
+          return GestureDetector(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DetailScreen())),
+            child: Container(
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              width: 300,
+              margin: EdgeInsets.only(right: 20),
+              child: buildCard(cake),
+            ),
           );
         }),
   );
