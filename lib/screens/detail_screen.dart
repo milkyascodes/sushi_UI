@@ -38,25 +38,28 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Container(
-              height: 250,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('${cake.imgUrl}'),
-                  )),
-              child: Center(
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.brown.shade200.withOpacity(1),
-                  ),
-                  child: Icon(
-                    FontAwesomeIcons.play,
-                    color: Colors.white,
+            Hero(
+              tag: cake,
+              child: Container(
+                height: 250,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('${cake.imgUrl}'),
+                    )),
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.brown.shade200.withOpacity(1),
+                    ),
+                    child: Icon(
+                      FontAwesomeIcons.play,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

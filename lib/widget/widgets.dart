@@ -210,11 +210,14 @@ Widget buildCardss() {
 Widget buildCard(Cake cake) {
   return Stack(
     children: [
-      Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage('${cake.imgUrl}'), fit: BoxFit.fill),
+      Hero(
+        tag: cake,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: DecorationImage(
+                image: AssetImage('${cake.imgUrl}'), fit: BoxFit.fill),
+          ),
         ),
       ),
       Positioned(
