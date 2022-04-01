@@ -6,10 +6,12 @@ import 'package:sushi_ui/model/cake_model.dart';
 import 'package:sushi_ui/screens/detail_screen.dart';
 import 'package:sushi_ui/screens/home_screen.dart';
 
-Widget buildTitle(
-    String title, double size, double height, Color color, bool center) {
+Widget buildTitle(String title, double size, double height, Color color,
+    bool center, int maxlines) {
   return Text(
     title,
+    maxLines: maxlines,
+    // overflow: TextOverflow.clip,
     textAlign: center ? TextAlign.center : TextAlign.left,
     style: TextStyle(
         fontSize: size,
@@ -54,7 +56,8 @@ Widget buildFAB(context) {
             backgroundColor: Colors.white,
             radius: 28,
           ),
-          Expanded(child: buildTitle('Get Started', 19, 1, Colors.white, true))
+          Expanded(
+              child: buildTitle('Get Started', 19, 1, Colors.white, true, 2))
         ],
       ));
 }
@@ -85,28 +88,38 @@ Widget buildTabs() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      buildTabBtn('All', true),
+      buildTabBtn('All', true, null),
       SizedBox(width: 20),
-      buildTabBtn('Cakes', false),
+      buildTabBtn('Cakes', false, null),
       SizedBox(width: 20),
-      buildTabBtn('Desserts', false),
+      buildTabBtn('Desserts', false, null),
     ],
   );
 }
 
-Widget buildTabBtn(String text, bool active) {
+Widget buildTabBtn(String text, bool active, IconData? icon) {
   return Expanded(
     child: Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: active ? Colors.green : Colors.white),
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 0),
+      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 0),
       child: Center(
-          child: Text(
-        text,
-        style: TextStyle(
-            fontWeight: FontWeight.w500,
-            color: active ? Colors.white : Colors.black),
+          child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: active ? Colors.white : Colors.black),
+          ),
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 13,
+          )
+        ],
       )),
     ),
   );
@@ -176,8 +189,10 @@ Widget buildCardss() {
         itemBuilder: (context, int index) {
           Cake cake = cakes[index];
           return GestureDetector(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DetailScreen())),
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailScreen(cake: cake))),
             child: Container(
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -208,7 +223,7 @@ Widget buildCard(Cake cake) {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildTitle('${cake.title}', 29, 1.3, Colors.white, false),
+              buildTitle('${cake.title}', 29, 1.3, Colors.white, false, 2),
               SizedBox(height: 10),
               buildDescription('${cake.description}', 16)
             ]),

@@ -71,7 +71,7 @@ class LandingPage extends StatelessWidget {
                       child: Column(
                         children: [
                           buildTitle('Baking Experience Like a Chef', 28, 1.4,
-                              Colors.white, true),
+                              Colors.white, true, 2),
                           SizedBox(height: 20),
                           buildDescription(
                               'Let\'s make a delious dish with the best reciepe for the family',

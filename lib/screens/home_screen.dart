@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               SizedBox(height: 60),
               buildTitle('Find Best Reciepe For Cooking', 25, 1.4, Colors.black,
-                  false),
+                  false, 2),
               SizedBox(height: 30),
               buildSearch(),
               SizedBox(height: 25),
