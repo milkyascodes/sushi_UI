@@ -237,36 +237,49 @@ Widget buildCard(Cake cake) {
 Widget buildIngredientList(cake) {
   return Expanded(
     child: SingleChildScrollView(
-        child: ListView.builder(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 70),
-            shrinkWrap: true,
-            itemCount: cake.ingredients.length,
-            itemBuilder: (context, int index) {
-              Ingredient ingredient = cake.ingredients[index];
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                child: Card(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  color: Color.fromARGB(209, 213, 228, 220),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.restaurant_menu,
-                            color: Colors.green,
-                          )),
-                      title: Text('${ingredient.title}'),
-                      trailing: Text('${ingredient.description}'),
-                    ),
+        child: ShaderMask(
+      shaderCallback: (Rect bounds) {
+        return LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: <Color>[
+            Colors.transparent,
+            Color.fromARGB(255, 113, 227, 117)
+          ],
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.dstIn,
+      child: ListView.builder(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 70),
+          shrinkWrap: true,
+          itemCount: cake.ingredients.length,
+          itemBuilder: (context, int index) {
+            Ingredient ingredient = cake.ingredients[index];
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+              child: Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                color: Color.fromARGB(209, 213, 228, 220),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.restaurant_menu,
+                          color: Colors.green,
+                        )),
+                    title: Text('${ingredient.title}'),
+                    trailing: Text('${ingredient.description}'),
                   ),
                 ),
-              );
-            })),
+              ),
+            );
+          }),
+    )),
   );
 }
