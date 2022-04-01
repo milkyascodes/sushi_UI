@@ -12,6 +12,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 235, 239, 240),
       body: Container(
         padding: EdgeInsets.all(15),
         child: Column(
@@ -76,7 +77,9 @@ class DetailScreen extends StatelessWidget {
                   buildTabBtn('1 Serving ', true, FontAwesomeIcons.angleDown)
                 ],
               ),
-            )
+            ),
+            SizedBox(height: 20),
+            buildIngredientList(cake),
           ],
         ),
       ),

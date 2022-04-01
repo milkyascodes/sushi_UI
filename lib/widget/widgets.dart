@@ -1,8 +1,10 @@
 // ignore_for_file: unnecessary_new, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sushi_ui/model/cake_model.dart';
+import 'package:sushi_ui/model/ingredients_model.dart';
 import 'package:sushi_ui/screens/detail_screen.dart';
 import 'package:sushi_ui/screens/home_screen.dart';
 
@@ -229,5 +231,42 @@ Widget buildCard(Cake cake) {
             ]),
       ),
     ],
+  );
+}
+
+Widget buildIngredientList(cake) {
+  return Expanded(
+    child: SingleChildScrollView(
+        child: ListView.builder(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 70),
+            shrinkWrap: true,
+            itemCount: cake.ingredients.length,
+            itemBuilder: (context, int index) {
+              Ingredient ingredient = cake.ingredients[index];
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
+                child: Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  color: Color.fromARGB(209, 213, 228, 220),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          child: Icon(
+                            Icons.restaurant_menu,
+                            color: Colors.green,
+                          )),
+                      title: Text('${ingredient.title}'),
+                      trailing: Text('${ingredient.description}'),
+                    ),
+                  ),
+                ),
+              );
+            })),
   );
 }
