@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sushi_ui/model/cake_model.dart';
 import 'package:sushi_ui/screens/home_screen.dart';
 
 Widget buildTitle(
@@ -110,57 +111,103 @@ Widget buildTabBtn(String text, bool active) {
   );
 }
 
-Widget buildCards() {
+// Widget buildCards() {
+//   return Container(
+//     height: 400,
+//     width: 340,
+//     decoration: BoxDecoration(
+//       borderRadius: BorderRadius.circular(30),
+//       color: Colors.grey,
+//     ),
+//     child: Stack(
+//       children: [
+//         Container(
+//           height: 400,
+//           decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(30),
+//               image: DecorationImage(
+//                   image: AssetImage('assets/images/ckake1.jpg'),
+//                   fit: BoxFit.cover)),
+//         ),
+//         Positioned(
+//           bottom: 20,
+//           left: 10,
+//           child: Container(
+//             width: 300,
+//             padding: const EdgeInsets.all(10.0),
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 buildTitle(
+//                     'Chocolate  Cup Cakes', 26, 1.3, Colors.white, false),
+//                 SizedBox(height: 10),
+//                 buildDescription('12 ingredients | 40 mins', 15)
+//               ],
+//             ),
+//           ),
+//         ),
+//         Positioned(
+//           right: 15,
+//           top: 20,
+//           child: Container(
+//             padding: EdgeInsets.all(20),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(20),
+//               color: Colors.brown.shade200.withOpacity(0.4),
+//             ),
+//             child: Icon(
+//               FontAwesomeIcons.bookmark,
+//               color: Colors.white,
+//             ),
+//           ),
+//         )
+//       ],
+//     ),
+//   );
+// }
+
+Widget buildCardss() {
   return Container(
-    height: 400,
-    width: 340,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(30),
-      color: Colors.grey,
-    ),
-    child: Stack(
-      children: [
-        Container(
-          height: 400,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
-                  image: AssetImage('assets/images/ckake1.jpg'),
-                  fit: BoxFit.cover)),
-        ),
-        Positioned(
-          bottom: 20,
-          left: 10,
-          child: Container(
+    height: 340,
+    // color: Colors.grey,
+    child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: cakes.length,
+        itemBuilder: (context, int index) {
+          Cake cake = cakes[index];
+          return Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             width: 300,
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildTitle(
-                    'Chocolate  Cup Cakes', 26, 1.3, Colors.white, false),
-                SizedBox(height: 10),
-                buildDescription('12 ingredients | 40 mins', 15)
-              ],
-            ),
-          ),
+            margin: EdgeInsets.only(right: 20),
+            child: buildCard(cake),
+          );
+        }),
+  );
+}
+
+Widget buildCard(Cake cake) {
+  return Stack(
+    children: [
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+              image: AssetImage('${cake.imgUrl}'), fit: BoxFit.fill),
         ),
-        Positioned(
-          right: 15,
-          top: 20,
-          child: Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.brown.shade200.withOpacity(0.4),
-            ),
-            child: Icon(
-              FontAwesomeIcons.bookmark,
-              color: Colors.white,
-            ),
-          ),
-        )
-      ],
-    ),
+      ),
+      Positioned(
+        bottom: 20,
+        left: 20,
+        right: 0,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildTitle('${cake.title}', 29, 1.3, Colors.white, false),
+              SizedBox(height: 10),
+              buildDescription('${cake.description}', 16)
+            ]),
+      ),
+    ],
   );
 }
